@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import { InputProvider } from './store/inputCtx'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-
+	<InputProvider>
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>
+	</InputProvider>,
+	document.getElementById('root'),
+)

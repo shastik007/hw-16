@@ -1,25 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from './InputForm.module.css'
 import Button from './UI/Button'
+import Input from './UI/Input'
 
 const InputForm = () => {
 	return (
 		<form className={classes.form}>
 			<h3>Login</h3>
 			<div>
-				<input type='text' />
+				<Input
+					name='userName'
+					disabled={false}
+					placeholder='userName'
+					type='text'
+				/>
 			</div>
 			<div>
-				<input type='text' />
+				<Input
+					name='email'
+					disabled={true}
+					placeholder='email'
+					type='email'
+				/>
 			</div>
 			<div>
-				<input type='password' />
+				<Input
+					name='password'
+					disabled={true}
+					placeholder='password'
+					type='password'
+				/>
 			</div>
 			<div>
 				<Button className={classes.login}>login</Button>
 				<Button className={classes.signUp}>Sign up</Button>
 			</div>
-			<h6>forgot password</h6>
+			<h6>forgot password ?</h6>
 		</form>
 	)
 }
