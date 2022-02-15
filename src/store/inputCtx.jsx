@@ -21,8 +21,11 @@ const reducer = (state, action) => {
 
 const init = {
 	useName: '',
+	isValidName: false,
 	email: '',
+	isValidEmail: false,
 	password: '',
+	isValidPassword: false,
 }
 
 export const InputProvider = ({ children }) => {

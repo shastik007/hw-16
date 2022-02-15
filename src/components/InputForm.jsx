@@ -3,26 +3,35 @@ import classes from './InputForm.module.css'
 import Button from './UI/Button'
 import Input from './UI/Input'
 import InputCtx from '../store/inputCtx'
+import { EMAILREGEXP, USERREGEXP } from '../helpers/constants'
 
 const InputForm = () => {
 	const { dispatch, state } = useContext(InputCtx)
 
 	const onChangeUserInputHandler = (e) => {
-		dispatch({ type: 'USERNAME_CHANGE', val: e.target.value })
+		if (USERREGEXP.test(e.target.value)) {
+			dispatch({ type: 'USERNAME_CHANGE', val: e.target.value })
+		}
 	}
 
 	const onChangeEmailInputHandler = (e) => {
-		dispatch({ type: 'EMAIL_CHANGE', val: e.target.value })
+		if (EMAILREGEXP.test(e.target.value)) {
+			dispatch({ type: 'EMAIL_CHANGE', val: e.target.value })
+		}
 	}
 
 	const onChangePasswordInputHandler = (e) => {
-		dispatch({ type: 'PASSWORD_CHANGE', val: e.target.value })
+		if (e.target.value.trim().length >= 5) {
+			let prevPassword = e.target.value.slice(0, 2)
+			let password = e.target.value.split('').reverse().join('')
+			dispatch({ type: 'PASSWORD_CHANGE', val: password + prevPassword })
+		}
+		
 	}
 
-	
 	const onSubmit = (e) => {
 		e.preventDefault()
-		console.log(state);
+		console.log(state)
 	}
 
 	return (
