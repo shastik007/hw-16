@@ -8,19 +8,12 @@ const InputCtx = React.createContext({})
 const reducer = (state, action) => {
 	switch (action.type) {
 		case USERNAME:
-			return { ...state, useName: action.val }
+			return { ...state, useName: action.val, isValidName: true }
 		case EMAIL:
-			return { ...state, email: action.val }
+			return { ...state, email: action.val, isValidEmail: true }
 		case PASSWORD:
-			return { ...state, password: action.val }
-		case 'VALIDATE_USERNAME':
-			return { ...state, isValidName: false }
-		case 'VALIDATE_EMAIL':
-			return { ...state, isValidEmail: false }
-		case 'VALIDATE_PASSWORD':
-			return { ...state, isValidPassword: false }
-		case 'VALIDATE':
-			return { ...state, isValid: false }
+			return { ...state, password: action.val, isValidPassword: true }
+
 		default:
 			return state
 	}
@@ -30,11 +23,13 @@ const init = {
 	useName: '',
 	email: '',
 	password: '',
+	isValidName: false,
+	isValidEmail: false,
+	isValidPassword: false,
 }
 
 export const InputProvider = ({ children }) => {
 	const [state, dispatchFl] = useReducer(reducer, init)
-
 	return (
 		<InputCtx.Provider value={{ state: state, dispatch: dispatchFl }}>
 			{children}

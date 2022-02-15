@@ -61,7 +61,17 @@ const InputForm = () => {
 				/>
 			</div>
 			<div>
-				<Button type='submit' className={classes.login}>
+				<Button
+					disabled={
+						state.isValidEmail &&
+						state.isValidPassword &&
+						state.isValidName
+							? false
+							: true
+					}
+					type='submit'
+					className={classes.login}
+				>
 					login
 				</Button>
 				<Button className={classes.signUp}>Sign up</Button>
