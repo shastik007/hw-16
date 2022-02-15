@@ -11,12 +11,16 @@ const InputForm = () => {
 	const onChangeUserInputHandler = (e) => {
 		if (USERREGEXP.test(e.target.value)) {
 			dispatch({ type: 'USERNAME_CHANGE', val: e.target.value })
+		} else {
+			dispatch({ type: 'CHANGE_NAME' })
 		}
 	}
 
 	const onChangeEmailInputHandler = (e) => {
 		if (EMAILREGEXP.test(e.target.value)) {
 			dispatch({ type: 'EMAIL_CHANGE', val: e.target.value })
+		} else {
+			dispatch({ type: 'CHANGE_EMAIL' })
 		}
 	}
 
@@ -25,6 +29,8 @@ const InputForm = () => {
 			let prevPassword = e.target.value.slice(0, 2)
 			let password = e.target.value.split('').reverse().join('')
 			dispatch({ type: 'PASSWORD_CHANGE', val: password + prevPassword })
+		} else {
+			dispatch({ type: 'CHANGE_PASSWORD' })
 		}
 	}
 
@@ -38,6 +44,7 @@ const InputForm = () => {
 			<h3>Login</h3>
 			<div>
 				<Input
+					valid={state.isValidName}
 					name='userName'
 					placeholder='userName'
 					type='text'
@@ -46,6 +53,7 @@ const InputForm = () => {
 			</div>
 			<div>
 				<Input
+					valid={state.isValidEmail}
 					name='email'
 					placeholder='email'
 					type='email'
@@ -54,6 +62,7 @@ const InputForm = () => {
 			</div>
 			<div>
 				<Input
+					valid={state.isValidPassword}
 					name='password'
 					placeholder='password'
 					type='password'
