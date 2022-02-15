@@ -11,6 +11,9 @@ const reducer = (state, action) => {
 			return { ...state, useName: action.val, isValidName: true }
 		case EMAIL:
 			return { ...state, email: action.val, isValidEmail: true }
+            state.useName = ''
+            state.password = ''
+            state.email = ''
 		case PASSWORD:
 			return { ...state, password: action.val, isValidPassword: true }
 
