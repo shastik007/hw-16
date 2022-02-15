@@ -26,7 +26,6 @@ const InputForm = () => {
 			let password = e.target.value.split('').reverse().join('')
 			dispatch({ type: 'PASSWORD_CHANGE', val: password + prevPassword })
 		}
-		
 	}
 
 	const onSubmit = (e) => {
@@ -40,7 +39,6 @@ const InputForm = () => {
 			<div>
 				<Input
 					name='userName'
-					disabled={false}
 					placeholder='userName'
 					type='text'
 					onChange={onChangeUserInputHandler}
@@ -49,7 +47,6 @@ const InputForm = () => {
 			<div>
 				<Input
 					name='email'
-					disabled={false}
 					placeholder='email'
 					type='email'
 					onChange={onChangeEmailInputHandler}
@@ -58,7 +55,6 @@ const InputForm = () => {
 			<div>
 				<Input
 					name='password'
-					disabled={false}
 					placeholder='password'
 					type='password'
 					onChange={onChangePasswordInputHandler}

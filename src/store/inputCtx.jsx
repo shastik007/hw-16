@@ -13,7 +13,14 @@ const reducer = (state, action) => {
 			return { ...state, email: action.val }
 		case PASSWORD:
 			return { ...state, password: action.val }
-
+		case 'VALIDATE_USERNAME':
+			return { ...state, isValidName: false }
+		case 'VALIDATE_EMAIL':
+			return { ...state, isValidEmail: false }
+		case 'VALIDATE_PASSWORD':
+			return { ...state, isValidPassword: false }
+		case 'VALIDATE':
+			return { ...state, isValid: false }
 		default:
 			return state
 	}
@@ -21,11 +28,8 @@ const reducer = (state, action) => {
 
 const init = {
 	useName: '',
-	isValidName: false,
 	email: '',
-	isValidEmail: false,
 	password: '',
-	isValidPassword: false,
 }
 
 export const InputProvider = ({ children }) => {
