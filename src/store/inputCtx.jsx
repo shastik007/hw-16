@@ -31,6 +31,9 @@ const reducer = (state, action) => {
 			return state.isValidPassword === null
 				? { ...state, isValidPassword: false }
 				: state
+		case 'OPEN_HOME_PAGE_&&_CLOSE':
+			return { ...state, homePage: !state.homePage }
+
 		default:
 			return state
 	}
@@ -43,6 +46,7 @@ const init = {
 	isValidName: null,
 	isValidEmail: null,
 	isValidPassword: null,
+	homePage: false,
 }
 
 export const InputProvider = ({ children }) => {

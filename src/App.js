@@ -2,11 +2,16 @@ import { useContext } from 'react'
 import './App.css'
 import LogingPage from './components/LoginPage'
 import InputCtx from './store/inputCtx'
+import HomePage from './components/HomePage'
 
 function App() {
+	const { state, dispatch } = useContext(InputCtx)
+	const { homePage } = state
+
 	return (
 		<div className='App'>
-			<LogingPage />
+			{homePage && <HomePage />}
+			{!homePage && <LogingPage />}
 		</div>
 	)
 }

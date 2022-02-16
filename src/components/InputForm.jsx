@@ -9,8 +9,6 @@ import HomePage from './HomePage'
 const InputForm = () => {
 	const { dispatch, state } = useContext(InputCtx)
 
-	// console.log(state.isValidName)
-
 	const onChangeUserInputHandler = (e) => {
 		if (USERREGEXP.test(e.target.value)) {
 			dispatch({ type: 'USERNAME_CHANGE', val: e.target.value })
@@ -39,6 +37,7 @@ const InputForm = () => {
 
 	const onSubmit = (e) => {
 		e.preventDefault()
+		dispatch({ type: 'OPEN_HOME_PAGE_&&_CLOSE' })
 	}
 
 	return (
@@ -95,7 +94,6 @@ const InputForm = () => {
 					>
 						login
 					</Button>
-					<Button className={classes.signUp}>Sign up</Button>
 				</div>
 				<h6>forgot password ?</h6>
 			</form>
