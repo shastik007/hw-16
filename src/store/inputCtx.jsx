@@ -33,7 +33,7 @@ const init = {
 	isValidName: +false,
 	isValidEmail: +false,
 	isValidPassword: +false,
-	homePage: true,
+	homePage: false,
 }
 
 export const InputProvider = ({ children }) => {

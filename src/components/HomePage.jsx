@@ -4,7 +4,7 @@ import Header from './Layout/Header'
 const HomePage = () => {
 	return (
 		<div>
-			<Header></Header>
+			<Header />
 		</div>
 	)
 }

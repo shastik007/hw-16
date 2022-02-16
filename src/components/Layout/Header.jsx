@@ -3,7 +3,7 @@ import Logo from '../../assets/logoo.jpg'
 
 const Header = () => {
 	return (
-		<Header>
+		<header>
 			<div>
 				<img src={Logo} alt='' />
 			</div>
@@ -13,7 +13,7 @@ const Header = () => {
 				<li>profile</li>
 				<li>log out</li>
 			</ul>
-		</Header>
+		</header>
 	)
 }
 

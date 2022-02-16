@@ -8,7 +8,12 @@ function App() {
 	const { state, dispatch } = useContext(InputCtx)
 	const { homePage } = state
 	console.log(homePage)
-	return <div className='App'>{homePage ? <HomePage /> : <LogingPage />}</div>
+	return (
+		<div className='App'>
+			{homePage && <HomePage />}
+			{!homePage && <LogingPage />}
+		</div>
+	)
 }
 
 export default App
