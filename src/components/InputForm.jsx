@@ -4,10 +4,12 @@ import Button from './UI/Button'
 import Input from './UI/Input'
 import InputCtx from '../store/inputCtx'
 import { EMAILREGEXP, USERREGEXP } from '../helpers/constants'
+import { useNavigate } from 'react-router-dom'
 import HomePage from './HomePage'
 
 const InputForm = () => {
 	const { dispatch, state } = useContext(InputCtx)
+	const navigate = useNavigate()
 
 	const onChangeUserInputHandler = (e) => {
 		if (USERREGEXP.test(e.target.value)) {
@@ -37,7 +39,7 @@ const InputForm = () => {
 
 	const onSubmit = (e) => {
 		e.preventDefault()
-		dispatch({ type: 'OPEN_HOME_PAGE_&&_CLOSE' })
+		return navigate('/HomePage')
 	}
 
 	return (

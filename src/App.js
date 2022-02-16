@@ -1,18 +1,19 @@
 import { useContext } from 'react'
 import './App.css'
 import LogingPage from './components/LoginPage'
-import InputCtx from './store/inputCtx'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import HomePage from './components/HomePage'
 
 function App() {
-	const { state, dispatch } = useContext(InputCtx)
-	const { homePage } = state
-
 	return (
-		<div className='App'>
-			{homePage && <HomePage />}
-			{!homePage && <LogingPage />}
-		</div>
+		<BrowserRouter>
+			<div className='App'>
+				<Routes>
+					<Route path='/loginPage' element={<LogingPage />} />
+					<Route path='/HomePage' element={<HomePage />} />
+				</Routes>
+			</div>
+		</BrowserRouter>
 	)
 }
 
