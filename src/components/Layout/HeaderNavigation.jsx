@@ -14,9 +14,9 @@ const HeaderNavigation = () => {
 				<li>home</li>
 				<li>settings</li>
 				<li>profile</li>
-				<button onClick={clear}>
-					<Link to={'/loginPage'}>log out</Link>
-				</button>
+				<Link onClick={clear} to={'/loginPage'}>
+					log out
+				</Link>
 			</ul>
 		</>
 	)
