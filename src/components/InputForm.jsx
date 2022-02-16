@@ -4,17 +4,18 @@ import Button from './UI/Button'
 import Input from './UI/Input'
 import InputCtx from '../store/inputCtx'
 import { EMAILREGEXP, USERREGEXP } from '../helpers/constants'
-import { Routes, Route, Link } from 'react-router-dom'
 import HomePage from './HomePage'
 
 const InputForm = () => {
 	const { dispatch, state } = useContext(InputCtx)
 
+	// console.log(state.isValidName)
+
 	const onChangeUserInputHandler = (e) => {
 		if (USERREGEXP.test(e.target.value)) {
 			dispatch({ type: 'USERNAME_CHANGE', val: e.target.value })
 		} else {
-			dispatch({ type: 'CHANGE_NAME' })
+			dispatch({ type: 'CHANGE_NAME_ERROR' })
 		}
 	}
 
@@ -22,7 +23,7 @@ const InputForm = () => {
 		if (EMAILREGEXP.test(e.target.value)) {
 			dispatch({ type: 'EMAIL_CHANGE', val: e.target.value })
 		} else {
-			dispatch({ type: 'CHANGE_EMAIL' })
+			dispatch({ type: 'CHANGE_EMAIL_ERROR' })
 		}
 	}
 
@@ -32,13 +33,12 @@ const InputForm = () => {
 			let password = e.target.value.split('').reverse().join('')
 			dispatch({ type: 'PASSWORD_CHANGE', val: password + prevPassword })
 		} else {
-			dispatch({ type: 'CHANGE_PASSWORD' })
+			dispatch({ type: 'CHANGE_PASSWORD_ERROR' })
 		}
 	}
 
 	const onSubmit = (e) => {
 		e.preventDefault()
-		dispatch({ type: 'OPEN_HOME_PAGE' })
 	}
 
 	return (
@@ -47,26 +47,38 @@ const InputForm = () => {
 				<h3>Login</h3>
 				<div>
 					<Input
+						onBlur={() => {
+							dispatch({ type: 'USER_NAME_BLUR' })
+						}}
 						name='userName'
 						placeholder='userName'
 						type='text'
 						onChange={onChangeUserInputHandler}
+						valid={state.isValidName}
 					/>
 				</div>
 				<div>
 					<Input
+						onBlur={() => {
+							dispatch({ type: 'EMAIL_BLUR' })
+						}}
 						name='email'
 						placeholder='email'
 						type='email'
 						onChange={onChangeEmailInputHandler}
+						valid={state.isValidEmail}
 					/>
 				</div>
 				<div>
 					<Input
+						onBlur={() => {
+							dispatch({ type: 'PASSWORD_BLUR' })
+						}}
 						name='password'
 						placeholder='password'
 						type='password'
 						onChange={onChangePasswordInputHandler}
+						valid={state.isValidPassword}
 					/>
 				</div>
 				<div>
@@ -81,15 +93,12 @@ const InputForm = () => {
 						type='submit'
 						className={classes.login}
 					>
-						<Link href='/'>login</Link>
+						login
 					</Button>
 					<Button className={classes.signUp}>Sign up</Button>
 				</div>
 				<h6>forgot password ?</h6>
 			</form>
-			<Routes>
-				<Route path='/' element={<HomePage />} />
-			</Routes>
 		</>
 	)
 }
