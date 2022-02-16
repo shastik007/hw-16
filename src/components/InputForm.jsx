@@ -4,6 +4,8 @@ import Button from './UI/Button'
 import Input from './UI/Input'
 import InputCtx from '../store/inputCtx'
 import { EMAILREGEXP, USERREGEXP } from '../helpers/constants'
+import { Routes, Route, Link } from 'react-router-dom'
+import HomePage from './HomePage'
 
 const InputForm = () => {
 	const { dispatch, state } = useContext(InputCtx)
@@ -40,53 +42,55 @@ const InputForm = () => {
 	}
 
 	return (
-		<form onSubmit={onSubmit} className={classes.form}>
-			<h3>Login</h3>
-			<div>
-				<Input
-					valid={state.isValidName}
-					name='userName'
-					placeholder='userName'
-					type='text'
-					onChange={onChangeUserInputHandler}
-				/>
-			</div>
-			<div>
-				<Input
-					valid={state.isValidEmail}
-					name='email'
-					placeholder='email'
-					type='email'
-					onChange={onChangeEmailInputHandler}
-				/>
-			</div>
-			<div>
-				<Input
-					valid={state.isValidPassword}
-					name='password'
-					placeholder='password'
-					type='password'
-					onChange={onChangePasswordInputHandler}
-				/>
-			</div>
-			<div>
-				<Button
-					disabled={
-						state.isValidEmail &&
-						state.isValidPassword &&
-						state.isValidName
-							? false
-							: true
-					}
-					type='submit'
-					className={classes.login}
-				>
-					login
-				</Button>
-				<Button className={classes.signUp}>Sign up</Button>
-			</div>
-			<h6>forgot password ?</h6>
-		</form>
+		<>
+			<form onSubmit={onSubmit} className={classes.form}>
+				<h3>Login</h3>
+				<div>
+					<Input
+						name='userName'
+						placeholder='userName'
+						type='text'
+						onChange={onChangeUserInputHandler}
+					/>
+				</div>
+				<div>
+					<Input
+						name='email'
+						placeholder='email'
+						type='email'
+						onChange={onChangeEmailInputHandler}
+					/>
+				</div>
+				<div>
+					<Input
+						name='password'
+						placeholder='password'
+						type='password'
+						onChange={onChangePasswordInputHandler}
+					/>
+				</div>
+				<div>
+					<Button
+						disabled={
+							state.isValidEmail &&
+							state.isValidPassword &&
+							state.isValidName
+								? false
+								: true
+						}
+						type='submit'
+						className={classes.login}
+					>
+						<Link href='/'>login</Link>
+					</Button>
+					<Button className={classes.signUp}>Sign up</Button>
+				</div>
+				<h6>forgot password ?</h6>
+			</form>
+			<Routes>
+				<Route path='/' element={<HomePage />} />
+			</Routes>
+		</>
 	)
 }
 

@@ -14,13 +14,13 @@ const reducer = (state, action) => {
 		case PASSWORD:
 			return { ...state, password: action.val, isValidPassword: +true }
 		case 'CHANGE_NAME':
-			return { ...state, isValidName: +false }
+			return { ...state, isValidName: false }
 		case 'CHANGE_EMAIL':
-			return { ...state, isValidEmail: +false }
+			return { ...state, isValidEmail: false }
 		case 'CHANGE_PASSWORD':
-			return { ...state, isValidPassword: +false }
+			return { ...state, isValidPassword: false }
 		case 'OPEN_HOME_PAGE':
-			return { ...state, homePage: true }
+			return localStorage.setItem('openHome')
 		default:
 			return state
 	}
@@ -30,10 +30,9 @@ const init = {
 	useName: '',
 	email: '',
 	password: '',
-	isValidName: +false,
-	isValidEmail: +false,
-	isValidPassword: +false,
-	homePage: false,
+	isValidName: false,
+	isValidEmail: false,
+	isValidPassword: false,
 }
 
 export const InputProvider = ({ children }) => {
