@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import classes from './InputForm.module.css'
 import Button from './UI/Button'
 import Input from './UI/Input'
@@ -36,7 +36,7 @@ const InputForm = () => {
 
 	const onSubmit = (e) => {
 		e.preventDefault()
-		console.log(state)
+		dispatch({ type: 'OPEN_HOME_PAGE' })
 	}
 
 	return (

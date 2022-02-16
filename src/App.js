@@ -1,12 +1,14 @@
+import { useContext } from 'react'
 import './App.css'
 import LogingPage from './components/LoginPage'
+import InputCtx from './store/inputCtx'
+import HomePage from './components/HomePage'
 
 function App() {
-	return (
-		<div className='App'>
-			<LogingPage />
-		</div>
-	)
+	const { state, dispatch } = useContext(InputCtx)
+	const { homePage } = state
+	console.log(homePage)
+	return <div className='App'>{homePage ? <HomePage /> : <LogingPage />}</div>
 }
 
 export default App
