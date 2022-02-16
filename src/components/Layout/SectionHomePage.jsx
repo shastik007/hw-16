@@ -4,9 +4,9 @@ const SectionHomePage = () => {
 	return (
 		<div>
 			<h1>
-				Welcome to home page
+				<img src="https://p4.wallpaperbetter.com/wallpaper/329/628/862/attack-on-titan-anime-hd-wallpaper-preview.jpg" alt="" />
 			</h1>
-			
+
 		</div>
 	)
 }
