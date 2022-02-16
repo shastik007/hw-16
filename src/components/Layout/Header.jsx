@@ -1,18 +1,13 @@
 import React from 'react'
 import Logo from '../../assets/logoo.jpg'
+import HeaderNavigation from './HeaderNavigation'
+import classes from './Header.module.css'
 
 const Header = () => {
 	return (
-		<header>
-			<div>
-				<img src={Logo} alt='' />
-			</div>
-			<ul>
-				<li>home</li>
-				<li>settings</li>
-				<li>profile</li>
-				<li>log out</li>
-			</ul>
+		<header className={classes.header}>
+			<h2>Peaksoft House</h2>
+			<HeaderNavigation />
 		</header>
 	)
 }
