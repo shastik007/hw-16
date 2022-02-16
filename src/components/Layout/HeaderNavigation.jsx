@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import classes from './HeaderNavigation.module.css'
 import InputCtx from '../../store/inputCtx'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const HeaderNavigation = () => {
 	const { dispatch } = useContext(InputCtx)
@@ -11,12 +11,11 @@ const HeaderNavigation = () => {
 	return (
 		<>
 			<ul className={classes.navigation}>
-				<li>home</li>
-				<li>settings</li>
-				<li>profile</li>
-				<Link onClick={clear} to={'/loginPage'}>
+				<NavLink to='/About'>About</NavLink>
+				<NavLink to='/Profile'>Profile</NavLink>
+				<NavLink onClick={clear} to={'/'}>
 					log out
-				</Link>
+				</NavLink>
 			</ul>
 		</>
 	)
