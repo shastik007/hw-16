@@ -2,7 +2,7 @@ import React from 'react'
 import InputForm from './InputForm'
 import logo from '../assets/logoo.jpg'
 import classes from './LoginPage.module.css'
-import AlertSuccess from './UI/Alert'
+
 
 const LogingPage = () => {
 	return (
@@ -11,7 +11,6 @@ const LogingPage = () => {
 				<img src={logo} alt='' />
 			</div>
 			<div className={classes.form}>
-				<AlertSuccess />
 				<InputForm />
 			</div>
 		</div>
