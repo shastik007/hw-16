@@ -37,8 +37,22 @@ const InputForm = () => {
 		}
 	}
 
+	const Request = async () => {
+		const response = await fetch(
+			'https://login-form-hw-default-rtdb.firebaseio.com/Users.json',
+			{
+				method: 'POST',
+				body: JSON.stringify(state),
+				headers: {
+					'Content-type': 'application/json',
+				},
+			},
+		)
+	}
+
 	const onSubmit = (e) => {
 		e.preventDefault()
+		Request()
 		return navigate('/HomePage')
 	}
 
