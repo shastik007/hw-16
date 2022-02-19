@@ -14,6 +14,7 @@ const LogingPage = () => {
 				<InputForm />
 			</div>
 		</div>
+		
 	)
 }
 
